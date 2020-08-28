@@ -3,7 +3,7 @@
 Use with:
 
 ```
-sbt new akka/akka-microservices-seed.g8
+sbt new akka/akka-microservices-seed-scala.g8
 ```
 
 Documentation at https://github.com/akka/akka-platform-guide
