@@ -69,4 +69,6 @@ libraryDependencies ++= Seq(
   "com.lightbend.akka" %% "akka-projection-testkit" % AkkaProjectionVersion % Test,
 )
 
-
+addCommandAlias("runNode1", "run local1.conf")
+addCommandAlias("runNode2", "run local2.conf")
+addCommandAlias("runNode3", "run local3.conf")

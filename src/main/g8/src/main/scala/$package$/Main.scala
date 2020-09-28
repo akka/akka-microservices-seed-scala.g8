@@ -1,5 +1,8 @@
 package $package$
 
+import com.typesafe.config.ConfigFactory
+import org.slf4j.LoggerFactory
+
 import akka.actor.typed.scaladsl.AbstractBehavior
 import akka.actor.typed.scaladsl.ActorContext
 import akka.actor.typed.scaladsl.Behaviors
@@ -10,8 +13,20 @@ import akka.management.scaladsl.AkkaManagement
 
 object Main {
 
+  val logger = LoggerFactory.getLogger(getClass)
+  
   def main(args: Array[String]): Unit = {
-    ActorSystem[Nothing](Main(), "$name;format="word-space,upper-camel"$")
+
+    val serviceName = "$name;format="word-space,upper-camel"$"
+    
+    if (args.nonEmpty) {
+      // if an argument is passed, it's expected to be an alternative config file
+      val configToLoad = args(0)
+      logger.info(s"Actor system will be initialized with configuration file [\$configToLoad]")
+      ActorSystem[Nothing](Main(), serviceName, ConfigFactory.load(configToLoad))
+    } else {
+      ActorSystem[Nothing](Main(), serviceName)
+    }
   }
 
   def apply(): Behavior[Nothing] = {
