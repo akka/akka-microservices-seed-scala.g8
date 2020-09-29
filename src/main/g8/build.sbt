@@ -15,8 +15,6 @@ Test / testOptions += Tests.Argument("-oDF")
 Test / logBuffered := false
 
 run / fork := false
-Global / cancelable := true // ctrl-c
-
 
 // For akka management snapshot
 resolvers += Resolver.bintrayRepo("akka", "snapshots")
