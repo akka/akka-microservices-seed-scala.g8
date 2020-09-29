@@ -15,7 +15,7 @@ Test / testOptions += Tests.Argument("-oDF")
 Test / logBuffered := false
 
 run / fork := false
-Global / cancelable := false // ctrl-c
+Global / cancelable := true // ctrl-c
 
 
 // For akka management snapshot
@@ -68,5 +68,3 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream-kafka" % AlpakkaKafkaVersion,
   "com.lightbend.akka" %% "akka-projection-testkit" % AkkaProjectionVersion % Test,
 )
-
-
