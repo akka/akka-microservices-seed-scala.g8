@@ -5,10 +5,10 @@
 -- NOTE: the keyspace as created here is probably not what you need in a production environment. 
 -- This is good enough for local development though. 
 
-CREATE KEYSPACE IF NOT EXISTS shoppingcart
+CREATE KEYSPACE IF NOT EXISTS $name;format="word-only,lowercase"$
   WITH REPLICATION = { 'class' : 'SimpleStrategy','replication_factor':1 };
 
-USE shoppingcart;
+USE $name;format="word-only,lowercase"$;
 
 CREATE TABLE IF NOT EXISTS messages (
   persistence_id text,
