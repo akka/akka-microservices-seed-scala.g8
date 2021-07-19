@@ -12,19 +12,19 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     ActorSystem[Nothing](Main(), "$name;format="word-space,upper-camel"$")
+
+    try {
+      init(system)
+    } catch {
+      case NonFatal(e) =>
+        logger.error("Terminating due to initialization failure.", e)
+        system.terminate()
+    }
   }
 
-  def apply(): Behavior[Nothing] = {
-    Behaviors.setup[Nothing](context => new Main(context))
+  def init(system: ActorSystem[_]): Unit = {
+    AkkaManagement(system).start()
+    ClusterBootstrap(system).start()
   }
-}
 
-class Main(context: ActorContext[Nothing]) extends AbstractBehavior[Nothing](context) {
-  val system = context.system
-
-  AkkaManagement(system).start()
-  ClusterBootstrap(system).start()
-
-  override def onMessage(msg: Nothing): Behavior[Nothing] =
-    this
 }
