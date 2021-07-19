@@ -26,16 +26,13 @@ Test / logBuffered := false
 run / fork := false
 Global / cancelable := false // ctrl-c
 
-// For akka management snapshot
-resolvers += Resolver.bintrayRepo("akka", "snapshots")
-
-val AkkaVersion = "2.6.10"
-val AkkaHttpVersion = "10.2.0"
-// FIXME once akka management 1.0.9 is released
-val AkkaManagementVersion = "1.0.8+35-9feaa689+20200825-1429"
-val AkkaPersistenceCassandraVersion = "1.0.3"
-val AlpakkaKafkaVersion = "2.0.5"
-val AkkaProjectionVersion = "1.0.0"
+val AkkaVersion = "2.6.14"
+val AkkaHttpVersion = "10.2.4"
+val AkkaManagementVersion = "1.0.10"
+val AkkaPersistenceJdbcVersion = "5.0.0"
+val AlpakkaKafkaVersion = "2.0.7"
+val AkkaProjectionVersion = "1.1.0"
+val ScalikeJdbcVersion = "3.5.0"
 
 enablePlugins(AkkaGrpcPlugin)
 
