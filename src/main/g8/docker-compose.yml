@@ -5,8 +5,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: shopping-cart
-      POSTGRES_PASSWORD: shopping-cart
+      POSTGRES_USER: $name$
+      POSTGRES_PASSWORD: $name$
 
   # this second PostgresSQL is used when running test
   postgres-db-test:
@@ -14,9 +14,9 @@ services:
     ports:
       - 5433:5432
     environment:
-      POSTGRES_DB: shopping-cart
-      POSTGRES_USER: shopping-cart
-      POSTGRES_PASSWORD: shopping-cart
+      POSTGRES_DB: $name$
+      POSTGRES_USER: $name$
+      POSTGRES_PASSWORD: $name$
 
 # See dockerhub for different versions of kafka and zookeeper
 # https://hub.docker.com/r/wurstmeister/kafka/

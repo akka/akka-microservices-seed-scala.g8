@@ -1,17 +1,18 @@
 package $package$
 
-import akka.actor.typed.scaladsl.AbstractBehavior
-import akka.actor.typed.scaladsl.ActorContext
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.ActorSystem
-import akka.actor.typed.Behavior
 import akka.management.cluster.bootstrap.ClusterBootstrap
 import akka.management.scaladsl.AkkaManagement
+import org.slf4j.LoggerFactory
+import scala.util.control.NonFatal
 
 object Main {
 
+  val logger = LoggerFactory.getLogger("shopping.cart.Main")
+
   def main(args: Array[String]): Unit = {
-    ActorSystem[Nothing](Main(), "$name;format="word-space,upper-camel"$")
+    val system = ActorSystem[Nothing](Behaviors.empty, "$name;format="word-space,upper-camel"$")
 
     try {
       init(system)
