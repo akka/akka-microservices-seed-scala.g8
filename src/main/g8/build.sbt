@@ -3,11 +3,20 @@ version := "1.0"
 
 organization := "com.lightbend.akka.samples"
 organizationHomepage := Some(url("https://akka.io"))
-licenses := Seq(("CC0", url("https://creativecommons.org/publicdomain/zero/1.0")))
+licenses := Seq(
+  ("CC0", url("https://creativecommons.org/publicdomain/zero/1.0"))
+)
 
-scalaVersion := "2.13.3"
+scalaVersion := "2.13.5"
 
-Compile / scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Xlog-reflective-calls", "-Xlint")
+Compile / scalacOptions ++= Seq(
+  "-target:11",
+  "-deprecation",
+  "-feature",
+  "-unchecked",
+  "-Xlog-reflective-calls",
+  "-Xlint"
+)
 Compile / javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation")
 
 Test / parallelExecution := false
@@ -16,7 +25,6 @@ Test / logBuffered := false
 
 run / fork := false
 Global / cancelable := false // ctrl-c
-
 
 // For akka management snapshot
 resolvers += Resolver.bintrayRepo("akka", "snapshots")
