@@ -9,7 +9,7 @@ import scala.util.control.NonFatal
 
 object Main {
 
-  val logger = LoggerFactory.getLogger("shopping.cart.Main")
+  val logger = LoggerFactory.getLogger("$package$.Main")
 
   def main(args: Array[String]): Unit = {
     val system = ActorSystem[Nothing](Behaviors.empty, "$name;format="word-space,upper-camel"$")

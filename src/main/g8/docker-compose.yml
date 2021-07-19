@@ -5,8 +5,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: $name$
-      POSTGRES_PASSWORD: $name$
+      POSTGRES_USER: $name;format="normalize"$
+      POSTGRES_PASSWORD: $name;format="normalize"$
 
   # this second PostgresSQL is used when running test
   postgres-db-test:
@@ -14,9 +14,9 @@ services:
     ports:
       - 5433:5432
     environment:
-      POSTGRES_DB: $name$
-      POSTGRES_USER: $name$
-      POSTGRES_PASSWORD: $name$
+      POSTGRES_DB: $name;format="normalize"$
+      POSTGRES_USER: $name;format="normalize"$
+      POSTGRES_PASSWORD: $name;format="normalize"$
 
 # See dockerhub for different versions of kafka and zookeeper
 # https://hub.docker.com/r/wurstmeister/kafka/
