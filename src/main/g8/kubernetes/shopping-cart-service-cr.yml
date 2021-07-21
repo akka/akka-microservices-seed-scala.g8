@@ -1,0 +1,24 @@
+apiVersion: "v1"
+kind: "Namespace"
+metadata:
+  name: "$name;format="normalize"$-namespace"
+---
+apiVersion: akka.lightbend.com/v1
+kind: AkkaMicroservice
+metadata:
+  name: "$name;format="normalize"$"
+  namespace: "$name;format="normalize"$-namespace"
+spec:
+  replicas: 1
+  image: <docker-registry>/$name;format="normalize"$:<tag> 
+  javaOptions: "-Xlog:gc -XX:InitialRAMPercentage=75 -XX:MaxRAMPercentage=75"
+  resources:
+    limits:
+      memory: "2Gi"
+    requests:
+      memory: "2Gi"
+      cpu: "1"
+  jdbc:
+    credentialsSecret: $name;format="normalize"$-jdbc-secret
+  kafka:
+    credentialsSecret: $name;format="normalize"$-kafka-secret
